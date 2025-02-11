@@ -1,0 +1,13 @@
+<h1>Détails de la résidence</h1>
+<p>ID: {{ residenceId }}</p>
+<h1>Détails de la résidence</h1>
+<p>ID: {{ residenceId }}</p>
+
+<button (click)="goToNextResidence()">Next</button>
+
+<h1>Détails de la résidence</h1>
+<p>ID: {{ residenceId }}</p>
+
+<button (click)="goToNextResidence()">Next</button>
+<button [routerLink]="['/add-residence']">Add Residence</button>
+<button [routerLink]="['/add-residence', residenceId]">Update Residence</button>

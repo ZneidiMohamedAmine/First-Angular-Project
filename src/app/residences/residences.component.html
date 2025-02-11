@@ -1,0 +1,29 @@
+<input type="text" [(ngModel)]="searchText" placeholder="Rechercher par adresse">
+
+<div *ngFor="let residence of filterResidences()">
+  <h2>{{ residence.name }}</h2>
+  <img [src]="residence.image" alt="{{ residence.name }}" width="200">
+  <p *ngIf="residence.status === 'Disponible'" style="color: green;">🟢 Disponible</p>
+  <p *ngIf="residence.status === 'En Construction'" style="color: orange;">🚧 En Construction</p>
+  <p *ngIf="residence.status === 'Vendu'" style="color: red;">🔴 Vendu</p>
+
+  <button (click)="showLocation(residence)">Show Location</button>
+  <button (click)="addToFavorites(residence)">Like ❤️</button>
+  <button routerLink="['/residence-details', residence.id]">Détails</button>
+  <button routerLink="['/apartments-by-residence', residence.id]">Appartements list</button>
+</div>
+
+
+<h2>Favoris</h2>
+<div *ngIf="favoriteResidences.length > 0">
+  <ul>
+    <li *ngFor="let fav of favoriteResidences">
+      {{ fav.name }} 
+      
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="favoriteResidences.length === 0">
+  <p>Aucune résidence ajoutée aux favoris.</p>
+</div>
