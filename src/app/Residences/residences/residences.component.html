@@ -1,4 +1,7 @@
 <input class="form-control mr-sm-2" type="search" placeholder="filter par adresse" #filter aria-label="Search" (input)="filterResults(filter.value)">
+<div class="text-center my-3">
+    <button class="btn btn-success" routerLink="/add-residance">➕ Ajouter une Residence</button>
+</div>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-4 col-sm-6 d-flex justify-content-center mb-4" *ngFor="let res of listResidencesFiltered">
