@@ -1,0 +1,68 @@
+<div class="container mt-4">
+  <h2 class="text-center">Ajouter un nouvel appartement</h2>
+
+  <form [formGroup]="apartForm" (ngSubmit)="onFormSubmit()" class="mt-4">
+    <div class="row">
+      <div class="col-md-6">
+        <label class="form-label">Numéro de l'appartement :</label>
+        <input type="text" class="form-control" formControlName="apartNum">
+        <div *ngIf="apartForm.get('apartNum')?.invalid && apartForm.get('apartNum')?.touched" class="text-danger">
+          Numéro obligatoire (chiffres uniquement).
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Numéro de l'étage :</label>
+        <input type="text" class="form-control" formControlName="floorNum">
+        <div *ngIf="apartForm.get('floorNum')?.invalid && apartForm.get('floorNum')?.touched" class="text-danger">
+          Numéro d'étage obligatoire (chiffres uniquement).
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <label class="form-label">Surface :</label>
+        <input type="number" class="form-control" formControlName="surface">
+        <div *ngIf="apartForm.get('surface')?.invalid && apartForm.get('surface')?.touched" class="text-danger">
+          Surface obligatoire.
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Terrasse :</label>
+        <input type="checkbox" formControlName="terrace">
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <label class="form-label">Surface Terrasse :</label>
+        <input type="number" class="form-control" formControlName="surfaceterrace" [disabled]="!apartForm.get('terrace')?.value">
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Catégorie :</label>
+        <input type="text" class="form-control" formControlName="category">
+        <div *ngIf="apartForm.get('category')?.invalid && apartForm.get('category')?.touched" class="text-danger">
+          Catégorie obligatoire.
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <label class="form-label">ID de la résidence :</label>
+        <input type="number" class="form-control" formControlName="ResidenceId">
+        <div *ngIf="apartForm.get('ResidenceId')?.invalid && apartForm.get('ResidenceId')?.touched" class="text-danger">
+          ID de résidence obligatoire.
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <button type="submit" class="btn btn-primary" [disabled]="apartForm.invalid">Ajouter</button>
+      <button type="button" class="btn btn-secondary ms-2" routerLink="/apartments">Retour</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-4 col-sm-6 d-flex justify-content-center mb-4" *ngFor="let apart of apartments">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body text-center">
+          <h5 class="card-title">🏢 Résidence ID : {{apart.ResidenceId}}</h5>
+          <h5 class="card-title">🏷 Catégorie : {{apart.category}}</h5>
+          <p class="card-text">🏠 Appartement N° : {{apart.apartNum}}</p>
+          <p class="card-text">📶 Étage : {{apart.floorNum}}</p>
+          <p class="card-text">📏 Surface : {{apart.surface}} m²</p>
+          <p class="card-text">🌿 Terrasse : {{ apart.terrace ? 'Oui' : 'Non' }}</p>
+          <p *ngIf="apart.terrace" class="card-text">📐 Surface Terrasse : {{apart.surfaceterrace}} m²</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

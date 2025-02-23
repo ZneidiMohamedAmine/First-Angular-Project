@@ -1,0 +1,34 @@
+<div class="container mt-4">
+  <h2 class="text-center">Liste des Appartements</h2>
+
+  <!-- Bouton d'ajout d'un appartement -->
+  <div class="text-center my-3">
+    <button class="btn btn-success" routerLink="/add-apartment">➕ Ajouter un Appartement</button>
+  </div>
+
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-4 col-sm-6 d-flex justify-content-center mb-4" *ngFor="let apart of apartments">
+      <div class="card shadow-lg border-0" style="width: 20rem;">
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold">🏢 Résidence ID : {{apart.ResidenceId}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">🏷 Catégorie : {{apart.category}}</h6>
+          
+          <ul class="list-group list-group-flush text-start">
+            <li class="list-group-item">📍 Appartement N° : <strong>{{apart.apartNum}}</strong></li>
+            <li class="list-group-item">📶 Étage : <strong>{{apart.floorNum}}</strong></li>
+            <li class="list-group-item">📏 Surface : <strong>{{apart.surface}} m²</strong></li>
+            <li class="list-group-item">🌿 Terrasse : 
+              <strong [ngClass]="{'text-success': apart.terrace, 'text-danger': !apart.terrace}">
+                {{ apart.terrace ? 'Oui' : 'Non' }}
+              </strong>
+            </li>
+            <li *ngIf="apart.terrace" class="list-group-item">📐 Surface Terrasse : <strong>{{apart.surfaceterrace}} m²</strong></li>
+          </ul>
+
+          <button class="btn btn-outline-primary mt-3">Modifier</button>
+          <button class="btn btn-outline-danger mt-3 ms-2">Supprimer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
