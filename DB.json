@@ -1,8 +1,26 @@
 {
-    "residences": [
-      
-    ],
-    "apartments": [
-      
-    ]
-  }
+  "residences": [
+    {
+      "id": 1,
+      "name": "Sunset Apartments",
+      "address": "123 Main St, Los Angeles, CA",
+      "image": "sunset_apartments.jpg",
+      "status": "Available"
+    },
+    {
+      "id": 2,
+      "name": "Greenwood Residence",
+      "address": "456 Oak Ave, San Francisco, CA",
+      "image": "greenwood_residence.jpg",
+      "status": "Occupied"
+    },
+    {
+      "id": 3,
+      "name": "Skyline Towers",
+      "address": "789 High St, New York, NY",
+      "image": "skyline_towers.jpg",
+      "status": "Available"
+    }
+  ],
+  "apartments": []
+}

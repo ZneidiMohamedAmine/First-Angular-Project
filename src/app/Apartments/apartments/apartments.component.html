@@ -18,7 +18,7 @@
             <li class="list-group-item">📶 Étage : <strong>{{apart.floorNum}}</strong></li>
             <li class="list-group-item">📏 Surface : <strong>{{apart.surface}} m²</strong></li>
             <li class="list-group-item">🌿 Terrasse : 
-              <strong [ngClass]="{'text-success': apart.terrace, 'text-danger': !apart.terrace}">
+              <strong (ngClass)="{'text-success': apart.terrace, 'text-danger': !apart.terrace}">
                 {{ apart.terrace ? 'Oui' : 'Non' }}
               </strong>
             </li>

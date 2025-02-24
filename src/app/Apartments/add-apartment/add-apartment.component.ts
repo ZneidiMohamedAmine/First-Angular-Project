@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApartmentsService } from 'src/app/services/apartments.service';
@@ -13,7 +13,7 @@ export class AddApartmentComponent {
   apartForm: FormGroup;
 
   constructor(
-    private fb: FormBuilder,
+    @Inject(FormBuilder) public fb: FormBuilder, 
     private apartmentsService: ApartmentsService,
     private router: Router
   ) {
