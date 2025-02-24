@@ -1,26 +1,26 @@
-<form (ngSubmit)="onFormSubmit()">
+<form [formGroup]="resForm" (ngSubmit)="onFormSubmit()" #f="ngForm">
   <div class="form-group">
-    <label for="residenceName">Nom Residence</label>
-    <input (ngModel)="res.name" name="name" type="text" class="form-control" id="residenceName" placeholder="Nom Residence">
+    <label for="name">Nom Residence</label>
+    <input formControlName="name" type="text" class="form-control" id="name" placeholder="Nom Residence">
   </div>
 
   <div class="form-group">
-    <label for="residenceAddress">Adresse</label>
-    <input (ngModel)="res.address" name="address" type="text" class="form-control" id="residenceAddress" placeholder="Adresse">
+    <label for="address">Adresse</label>
+    <input formControlName="address" type="text" class="form-control" id="address" placeholder="Adresse">
   </div>
 
   <div>
     <div class="form-check form-check-inline">
-      <input (ngModel)="res.status" name="status" class="form-check-input" type="radio" id="available" value="Disponible">
-      <label class="form-check-label" for="available">Disponible</label>
+      <input formControlName="status" class="form-check-input" type="radio" value="Disponible">
+      <label class="form-check-label">Disponible</label>
     </div>
     <div class="form-check form-check-inline">
-      <input (ngModel)="res.status" name="status" class="form-check-input" type="radio" id="sold" value="Vendu">
-      <label class="form-check-label" for="sold">Vendu</label>
+      <input formControlName="status" class="form-check-input" type="radio" value="Vendu">
+      <label class="form-check-label">Vendu</label>
     </div>
     <div class="form-check form-check-inline">
-      <input (ngModel)="res.status" name="status" class="form-check-input" type="radio" id="underConstruction" value="En Construction">
-      <label class="form-check-label" for="underConstruction">En Construction</label>
+      <input formControlName="status" class="form-check-input" type="radio" value="En Construction">
+      <label class="form-check-label">En Construction</label>
     </div>
   </div>
 

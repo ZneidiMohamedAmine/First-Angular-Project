@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Residence } from 'src/app/core/models/residence';
 import { ResidenceService } from 'src/app/core//models/services/residence.service';
@@ -12,6 +12,7 @@ import { ResidenceService } from 'src/app/core//models/services/residence.servic
 export class AddResidenceComponent implements OnInit {
   res!: Residence;
   updating = false;
+  resForm!: FormGroup; 
 
 
   selectedOption!: string;
@@ -42,26 +43,30 @@ export class AddResidenceComponent implements OnInit {
 
   @ViewChild('f') myForm: NgForm | undefined; 
 
-  onFormSubmit(){
-
-    
-
-      console.log(this.myForm?.value);
-      this.res.name = this.myForm?.value['name'];
-      this.res.address = this.myForm?.value['address'];
-      this.res.status = this.selectedOption;
-      this.res.image = "../../assets/R1.jpeg";
-      this.res.status = "Disponible";
-      if (!this.updating)
+  onFormSubmit() {
+    if (!this.myForm) {
+      console.error('Form is not initialized');
+      return;
+    }
+  
+    console.log(this.myForm.value);
+  
+    this.res.name = this.myForm.value['name'];
+    this.res.address = this.myForm.value['address'];
+    this.res.status = this.selectedOption;
+    this.res.image = "../../assets/R1.jpeg";
+  
+    if (!this.updating) {
       this.residenceService.getResidences().subscribe(residences => {
         this.res.id = residences.length + 1;
+        this.residenceService.addResidence(this.res);
       });
-      if (!this.updating)
-      this.residenceService.addResidence(this.res);
-    else
+    } else {
       this.residenceService.updateResidence(this.res);
-     // this.router.navigate(['/residences']);
-     console.log(this.residenceService.getResidences());
+    }
+  
+    console.log(this.residenceService.getResidences());
   }
+  
 
 }
